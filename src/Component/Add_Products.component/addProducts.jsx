@@ -13,8 +13,10 @@ export default function AddProducts() {
 
     const onClickFun = (e)=>{
         e.preventDefualt();
-        setlistOfObject(()=>listOfObject.push({object}));
+        setlistOfObject(listOfObject.push({...object}));
+
     }
+
 
   return (
     <div>
@@ -32,6 +34,30 @@ export default function AddProducts() {
       <input name="IfSeason" type="text" onChange={holdInputInfo}></input>
       <br />
       <button type="button" onClick={onClickFun}>Send</button>
+
+      <div>
+                <table>
+                    <tr>
+                        <th>Product Name</th>
+                        <th>Product price</th>
+                        <th>Product units</th>
+                        <th>Product If in Season</th>
+                    </tr>
+                    {
+                        listOfObject.map((pItem =>
+                            <tr>
+                                <td>{pItem.productName}</td>
+                                <td>{pItem.price}</td>
+                                <td>{pItem.units}</td>
+                                <td>{pItem.IfSeason}</td>
+                            </tr>
+                        ))
+                    }
+                </table>
+            </div>
+
+
     </div>
+    
   );
 }
